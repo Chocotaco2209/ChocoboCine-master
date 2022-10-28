@@ -118,7 +118,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @NonNull
     @Override
-    public ReservationAdapter.ReservationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReservationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //create new View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reservation_card, parent, false);
@@ -127,7 +127,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReservationAdapter.ReservationHolder reservationHolder, int position) {
+    public void onBindViewHolder(@NonNull ReservationHolder reservationHolder, int position) {
 
         reservationHolder.reservationObject = reservationList.get(position);
 

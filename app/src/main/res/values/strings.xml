@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CinemaApp</string>
+    <string name="app_name">ChocoboCINE</string>
     <string name="title_home">Home</string>
     <string name="title_reservations">Reservations</string>
     <string name="title_favorites">Favorites</string>
@@ -13,12 +13,15 @@
 
     <string-array name="genres_array">
         <item>All</item>
+        <item>Showing</item>
+        <item>Upcoming</item>
+        <item>Action</item>
+        <item>Animation</item>
         <item>Drama</item>
         <item>Adventure</item>
-        <item>Animation</item>
         <item>Horror</item>
-        <item>Comedy</item>
         <item>Romance</item>
+        <item>Comedy</item>
         <item>Documentary</item>
 
     </string-array>

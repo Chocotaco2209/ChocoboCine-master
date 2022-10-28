@@ -32,4 +32,16 @@
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
         />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="450dp"
+        android:layout_height="604dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/swipeSuggestionText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_block" />
+
 </android.support.constraint.ConstraintLayout>

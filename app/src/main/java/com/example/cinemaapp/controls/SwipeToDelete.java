@@ -13,9 +13,11 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.model.Reservation;
 import com.example.cinemaapp.adapters.ReservationAdapter;
 import com.example.cinemaapp.repository.Repository;
 
+import java.util.List;
 import java.util.Objects;
 
 public class SwipeToDelete extends ItemTouchHelper.SimpleCallback {
