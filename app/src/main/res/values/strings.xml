@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">ChocoboCINE</string>
     <string name="title_home">Home</string>
-    <string name="title_reservations">Reservations</string>
+    <string name="title_reservations">Booking</string>
     <string name="title_favorites">Favorites</string>
-    <string name="swipeButtonText">SWIPE TO RESERVE</string>
+    <string name="swipeButtonText">SWIPE TO BOOK</string>
     <string name="movieTitle">Title</string>
     <string name="movieTime">13:30</string>
-    <string name="no_reservations_msg_header">No reservations yet</string>
-    <string name="no_favorites_msg_header">No favorites yet</string>
-    <string name="no_favorites_msg_body">Tap the heart icon on a film to add it to your favorites list.</string>
-    <string name="no_reservations_msg_body">Tap the RESERVE button on a film to make a reservation.</string>
+    <string name="no_reservations_msg_header">No booking yet</string>
+    <string name="no_favorites_msg_header">No interested movies yet</string>
+    <string name="no_favorites_msg_body">Tap the heart icon on a film to add it to your interests list.</string>
+    <string name="no_reservations_msg_body">Tap the BOOK button on a film to make a reservation.</string>
 
     <string-array name="genres_array">
         <item>All</item>
@@ -20,9 +20,9 @@
         <item>Drama</item>
         <item>Adventure</item>
         <item>Horror</item>
-        <item>Romance</item>
         <item>Comedy</item>
-        <item>Documentary</item>
+        <item>Ascending Ratings</item>
+        <item>Descending Ratings</item>
 
     </string-array>
 

@@ -2,35 +2,27 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landing_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LandingActivity"
-    android:id="@+id/landing_layout">
-
-    <ImageView
-        android:id="@+id/mainLogo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/main_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    android:background="#373737"
+    tools:context=".view.LandingActivity">
 
     <TextView
         android:id="@+id/swipeSuggestionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="START EXPLORING"
-        android:textColor="@color/colorPrimary"
-        android:textSize="17sp"
+        android:layout_marginBottom="36dp"
         android:alpha="0"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
-        />
+        android:text="Swipe right to explore!"
+        android:textColor="@color/titleColor"
+        android:textIsSelectable="true"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -42,6 +34,20 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777"
         app:srcCompat="@drawable/main_block" />
+
+    <TextView
+        android:id="@+id/trendText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trending"
+        android:textColor="#C6C5B9"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

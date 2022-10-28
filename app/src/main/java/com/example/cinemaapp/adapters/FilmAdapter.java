@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmHolder> {
-    private List<Film> filmlist = new ArrayList<>();
+    private List<Film> films = new ArrayList<>();
     private Fragment contextGetter;
     private int mExpandedPosition = -1;
 
@@ -49,7 +49,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final FilmHolder holder, final int position) {
-        Film currentFilm = filmlist.get(position);
+        Film currentFilm = films.get(position);
         holder.filmObject = currentFilm;
         holder.poster.setImageResource(currentFilm.getImagePath());
         holder.textViewTitle.setText(currentFilm.getTitle());
@@ -92,11 +92,11 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmHolder> {
 
     @Override
     public int getItemCount() {
-        return filmlist.size();
+        return films.size();
     }
 
-    public void setFilmlist(List<Film> filmlist) {
-        this.filmlist = filmlist;
+    public void setfilms(List<Film> films) {
+        this.films = films;
     }
 
     class FilmHolder extends RecyclerView.ViewHolder {

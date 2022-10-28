@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@id/navigation"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="#373737"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

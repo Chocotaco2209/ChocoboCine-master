@@ -23,9 +23,6 @@ import android.widget.TextView;
 
 import com.example.cinemaapp.R;
 
-/**
- * Custom view for Sliding Button (Confirm reservation)
- */
 public class SwipeButton extends RelativeLayout {
     private OnSwipeButtonListener listener;
 
@@ -179,9 +176,6 @@ public class SwipeButton extends RelativeLayout {
         };
     }
 
-    /**
-     * Animation for move back
-     */
     private void moveButtonBack() {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
@@ -204,9 +198,6 @@ public class SwipeButton extends RelativeLayout {
         animatorSet.start();
     }
 
-    /**
-     * Animation for expand
-     */
     private void expandButton() {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
@@ -259,9 +250,6 @@ public class SwipeButton extends RelativeLayout {
         });
     }
 
-    /**
-     * Animation for collapse
-     */
     private void collapseButton() {
         final ValueAnimator widthAnimator = ValueAnimator.ofInt(
                 slidingButton.getWidth(),

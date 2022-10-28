@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FavoriteFilmAdapter extends RecyclerView.Adapter<FavoriteFilmAdapter.FavoriteFilmHolder> {
-    private List<Film> filmlist = Repository.favoriteList;
+    private List<Film> films = Repository.favoriteList;
     private Fragment contextGetter;
     private int mExpandedPosition = -1;
 
@@ -49,7 +49,7 @@ public class FavoriteFilmAdapter extends RecyclerView.Adapter<FavoriteFilmAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final FavoriteFilmHolder holder, final int position) {
-        Film currentFilm = filmlist.get(position);
+        Film currentFilm = films.get(position);
         holder.filmObject = currentFilm;
         holder.position = position;
         holder.poster.setImageResource(currentFilm.getImagePath());
@@ -99,11 +99,7 @@ public class FavoriteFilmAdapter extends RecyclerView.Adapter<FavoriteFilmAdapte
 
     @Override
     public int getItemCount() {
-        return filmlist.size();
-    }
-
-    public void setFilmlist(List<Film> filmlist) {
-        this.filmlist = filmlist;
+        return films.size();
     }
 
     class FavoriteFilmHolder extends RecyclerView.ViewHolder {
@@ -170,9 +166,9 @@ public class FavoriteFilmAdapter extends RecyclerView.Adapter<FavoriteFilmAdapte
                     else {
                         favorite.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_favorite_border_black_35dp, 0);
                         filmObject.setFavorite(false);
-                        filmlist.remove(position);
+                        films.remove(position);
                         notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, filmlist.size());
+                        notifyItemRangeChanged(position, films.size());
 
                         if (Repository.favoriteList.isEmpty()) {
                             final TextView header = contextGetter.getView().findViewById(R.id.no_favorites_message_header);

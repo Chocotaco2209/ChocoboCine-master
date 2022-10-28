@@ -18,54 +18,41 @@
         android:src="@drawable/ic_exit_to_app_black_24dp"
         />
 
-    <ImageView
-        android:id="@+id/qr_code"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/qrcode"
-        />
-
     <TextView
         android:id="@+id/scan_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="345dp"
+        android:layout_height="94dp"
         android:layout_below="@+id/qr_code"
-        android:layout_toLeftOf="@+id/popup"
-        android:layout_toRightOf="@+id/popup"
-        android:layout_toStartOf="@+id/popup"
-        android:layout_toEndOf="@+id/popup"
-        android:text="Scan this at the entrance!"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Your ticket has been booked!"
         android:textColor="@color/colorPrimary"
         android:textSize="22sp"
         android:textStyle="bold"
-        tools:ignore="NotSibling"
-        />
+        tools:ignore="NotSibling" />
 
     <ImageView
         android:id="@+id/seats"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/seats"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/scan_text"
         android:layout_marginStart="145dp"
         android:layout_marginLeft="145dp"
-        android:layout_below="@+id/scan_text"
-        />
+        android:layout_marginTop="88dp"
+        android:src="@drawable/seats" />
 
     <TextView
         android:id="@+id/reserved_seats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:layout_below="@+id/seats"
-        android:text="Seats"
+        android:layout_marginTop="23dp"
         android:gravity="center"
+        android:text="Seats"
         android:textColor="@color/colorPrimary"
         android:textSize="19sp"
         android:textStyle="bold" />

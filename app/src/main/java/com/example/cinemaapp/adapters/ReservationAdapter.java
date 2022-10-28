@@ -74,7 +74,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                 @Override
                 public void onClick(View v) {
                     reservedSeats.setText(getSeatsAsString(reservationObject.getPlaces()));
-                    qrCode.setImageBitmap(reservationObject.getCodeQR());
                     openPopup();
                 }
             });

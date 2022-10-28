@@ -5,47 +5,45 @@
     android:id="@+id/favorites"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment" >
+    android:background="#373737"
+    tools:context=".view.HomeFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_favorites"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:paddingBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/navigation" />
 
     <TextView
         android:id="@+id/no_favorites_message_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent"
         android:drawableTop="@drawable/ic_favorite_black_100dp"
         android:text="@string/no_favorites_msg_header"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorPrimary"
         android:visibility="invisible"
-        />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/no_favorites_message_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/no_favorites_message_header"
         android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
         android:text="@string/no_favorites_msg_body"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/darker_gray"
         android:visibility="invisible"
-        />
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/no_favorites_message_header" />
 
 </android.support.constraint.ConstraintLayout>

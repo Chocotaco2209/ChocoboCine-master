@@ -6,7 +6,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.adapters.ReservationAdapter;
-import com.example.cinemaapp.controls.SwipeToDelete;
 import com.example.cinemaapp.repository.Repository;
 
 import java.io.Serializable;
@@ -38,9 +36,6 @@ public class ReservationFragment extends Fragment implements Serializable {
         rAdapter.setReservationList(Repository.getReservationList());
 
         recyclerView.setAdapter(rAdapter);
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDelete(rAdapter));
-        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         if (Repository.getReservationList().isEmpty()) {
             final TextView header = view.findViewById(R.id.no_reservations_message_header);

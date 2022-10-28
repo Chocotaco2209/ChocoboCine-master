@@ -8,23 +8,23 @@ import java.util.List;
 
 public class HomePresenter {
 
-    List<Film> filmList = Repository.getHardcodedList();
+    List<Film> films = Repository.getHardcodedList();
 
 
     public List<Film> filterByGenre(String genre){
         if (genre.equals("All"))
-            return filmList;
+            return films;
 
-        List<Film> filteredFilmList = new ArrayList<>();
+        List<Film> filteredfilms = new ArrayList<>();
 
-        for (Film f : filmList){
+        for (Film f : films){
 
             if(f.getGenre().equals(genre)){
 
-                filteredFilmList.add(f);
+                filteredfilms.add(f);
             }
         }
 
-        return filteredFilmList;
+        return filteredfilms;
     }
  }

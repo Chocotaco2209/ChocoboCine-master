@@ -16,14 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Repository {
-    static List<Film> filmList = new ArrayList<>();
+    static List<Film> films = new ArrayList<>();
     static List<Reservation> reservationList = new ArrayList<>();
     public static List<Film> favoriteList = new ArrayList<>();
     private static HashMap<String, HashMap<Time, List<Boolean>>> program;
     static List<Boolean> cinemaPlaces;
 
     public static List<Film> getHardcodedList() {
-        List<Film> filmList = Arrays.asList(
+        List<Film> films = Arrays.asList(
                 new Film("Black Adam", "Action", "Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods - and imprisoned just as quickly - Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world. ", "7.1", R.drawable.blackadam),
                 new Film("Smile", "Horror", "After witnessing a bizarre, traumatic incident involving a patient, Dr. Rose Cotter starts experiencing frightening occurrences that she can't explain. Rose must confront her troubling past in order to survive and escape her horrifying new reality. ", "6.9", R.drawable.smile),
                 new Film("Ticket To Paradise", "Comedy", "A divorced couple teams up and travels to Bali to stop their daughter from making the same mistake they think they made 25 years ago. ", "6.3", R.drawable.tiktopas),
@@ -32,7 +32,7 @@ public class Repository {
                 new Film("Black Panther: Wakanda Forever", "Action", "The nation of Wakanda is pitted against intervening world powers as they mourn the loss of their king T'Challa. ", "Not yet", R.drawable.blackp),
                 new Film("Avatar: The Way of Water", "Adventure", "Jake Sully lives with his newfound family formed on the planet of Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their planet. ", "Not yet", R.drawable.avatar2)
         );
-        return filmList;
+        return films;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

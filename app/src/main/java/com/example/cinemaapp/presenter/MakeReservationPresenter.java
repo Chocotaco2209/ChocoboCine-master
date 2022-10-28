@@ -61,7 +61,7 @@ public class MakeReservationPresenter {
 
         Bitmap generatedQR = generateQR();
         //Create reservation & save to Repository
-        Reservation reservation = new Reservation(film, timeObj, listPlaces, generatedQR);
+        Reservation reservation = new Reservation(film, timeObj, listPlaces);
         Repository.addReservation(reservation);
     }
 

@@ -23,7 +23,6 @@ public class HomeFragment extends Fragment {
 
     private HomePresenter homeActivityPresenter;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -39,7 +38,7 @@ public class HomeFragment extends Fragment {
 
         final FilmAdapter adapter = new FilmAdapter(this);
         recyclerView.setAdapter(adapter);
-        adapter.setFilmlist(Repository.getHardcodedList());
+        adapter.setfilms(Repository.getHardcodedList());
 
         //Add spinner
         Spinner spinner = (Spinner) view.findViewById(R.id.filter_spinner);
@@ -52,10 +51,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedGenre = (String)parent.getItemAtPosition(position);
-                List<Film> filteredFilmlist = homeActivityPresenter.filterByGenre(selectedGenre);
+                List<Film> filteredfilms = homeActivityPresenter.filterByGenre(selectedGenre);
                 final FilmAdapter adapter = new FilmAdapter(pointerSaver);
                 recyclerView.setAdapter(adapter);
-                adapter.setFilmlist(filteredFilmlist);
+                adapter.setfilms(filteredfilms);
             }
 
             @Override

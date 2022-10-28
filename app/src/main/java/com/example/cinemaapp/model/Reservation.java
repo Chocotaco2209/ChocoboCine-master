@@ -13,15 +13,13 @@ public class Reservation implements Serializable {
     private Film film;
     private Time startTime;
     private List<Integer> places;
-    private Bitmap codeQR;
 
     public Reservation(){}
 
-    public Reservation(Film film, Time startTime, List<Integer> places, Bitmap codeQR) {
+    public Reservation(Film film, Time startTime, List<Integer> places) {
         this.film = film;
         this.startTime = startTime;
         this.places = places;
-        this.codeQR = codeQR;
     }
 
     public Film getFilm() {
@@ -40,23 +38,13 @@ public class Reservation implements Serializable {
         this.startTime = startTime;
     }
 
-    public Bitmap getCodeQR() {
-        return codeQR;
-    }
-
-    public void setCodeQR(Bitmap codeQR) {
-        this.codeQR = codeQR;
-    }
-
     public List<Integer> getPlaces() { return places; }
 
     @Override
     public String toString() {
         return "Reservation{" +
                 "film=" + film +
-                ", startTime=" + startTime +
-                ", codeQR='" + codeQR + '\'' +
-                '}';
+                ", startTime=" + startTime + '}';
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
