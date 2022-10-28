@@ -110,7 +110,7 @@ public class Repository {
                 i++;
                 HashMap<Time, List<Boolean>> thisFilmProgram = new HashMap<>();
                 for (Time t : thisFilmTimes) {
-                    thisFilmProgram.put(t, Arrays.asList(true, true, true, true, true, true, true));
+                    thisFilmProgram.put(t, Arrays.asList(true, true, true, true, true, true, true, true, true));
                 }
                 program.put(f.getTitle(), thisFilmProgram);
             }
