@@ -20,7 +20,7 @@ public class Film implements Serializable {
         this.imagePath = imagePath;
         isInterested = false;
     }
-
+// get info of movies
     public String getTitle() {
         return title;
     }
