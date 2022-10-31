@@ -75,7 +75,6 @@ public class FavoriteFilmAdapter extends RecyclerView.Adapter<FavoriteFilmAdapte
             holder.favorite.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_favorite_border_black_35dp, 0);
         }
 
-
         //expand card
         final boolean isExpanded = position==mExpandedPosition;
         holder.detailsOnExpand.setVisibility(isExpanded?View.VISIBLE:View.GONE);
