@@ -1,7 +1,7 @@
 package com.example.cinemaapp.view;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.model.Film;
 import com.example.cinemaapp.adapters.FilmAdapter;
+import com.example.cinemaapp.model.Film;
 import com.example.cinemaapp.presenter.HomePresenter;
 import com.example.cinemaapp.repository.Repository;
 

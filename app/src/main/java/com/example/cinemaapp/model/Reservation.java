@@ -1,6 +1,5 @@
 package com.example.cinemaapp.model;
 
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 

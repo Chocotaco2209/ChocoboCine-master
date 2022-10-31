@@ -16,10 +16,10 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.cinemaapp.R;
 import com.example.cinemaapp.model.Film;
 import com.example.cinemaapp.repository.Repository;
 import com.example.cinemaapp.view.MakeReservationActivity;
-import com.example.cinemaapp.R;
 
 import java.sql.Date;
 import java.sql.Time;
