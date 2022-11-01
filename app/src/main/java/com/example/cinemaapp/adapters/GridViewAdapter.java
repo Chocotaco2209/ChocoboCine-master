@@ -1,5 +1,6 @@
 package com.example.cinemaapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
@@ -16,9 +17,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GridViewAdapter extends BaseAdapter {
-    private List<Integer> listOfPlaces;
-    private List<Integer> selectedPositions;
-    private Context mContext;
+    private final List<Integer> listOfPlaces;
+    private final List<Integer> selectedPositions;
+    private final Context mContext;
     
     private List<Boolean> cinemaPlacesState; 
 
@@ -47,6 +48,7 @@ public class GridViewAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Button button;
@@ -62,20 +64,16 @@ public class GridViewAdapter extends BaseAdapter {
                 button.setBackgroundColor(Color.rgb(53, 172, 72));
             }
             button.setTextColor(Color.BLACK);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int pos = Integer.parseInt(((Button) view).getText().toString()) - 1;
+            button.setOnClickListener(view -> {
+                int pos = Integer.parseInt(((Button) view).getText().toString()) - 1;
 
-                    //allow multiple select
-                    int selectedIndex = selectedPositions.indexOf(pos);
-                    if (cinemaPlacesState.get(pos) && selectedIndex > -1) {
-                        selectedPositions.remove(selectedIndex);
-                        ((Button) view).setBackgroundColor(Color.rgb(53, 172, 72));
-                    } else if (cinemaPlacesState.get(pos) && selectedIndex == -1){
-                        selectedPositions.add(pos);
-                        ((Button) view).setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.titleColor));
-                    }
+                int selectedIndex = selectedPositions.indexOf(pos);
+                if (cinemaPlacesState.get(pos) && selectedIndex > -1) {
+                    selectedPositions.remove(selectedIndex);
+                    ((Button) view).setBackgroundColor(Color.rgb(53, 172, 72));
+                } else if (cinemaPlacesState.get(pos) && selectedIndex == -1){
+                    selectedPositions.add(pos);
+                    ((Button) view).setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.titleColor));
                 }
             });
         } else {

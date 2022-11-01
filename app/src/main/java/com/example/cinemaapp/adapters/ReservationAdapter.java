@@ -1,5 +1,6 @@
 package com.example.cinemaapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -30,7 +31,7 @@ import java.util.Objects;
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.ReservationHolder> {
 
     private List<Reservation> reservationList = new ArrayList<>();
-    private Fragment context;
+    private final Fragment context;
 
     public ReservationAdapter(Fragment context) {
 
@@ -68,14 +69,9 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             qrCode = popup.findViewById(R.id.qr_code);
 
             Button popupButton = itemView.findViewById(R.id.detail_button);
-            popupButton.setOnClickListener(new View.OnClickListener() {
-
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                @Override
-                public void onClick(View v) {
-                    reservedSeats.setText(getSeatsAsString(reservationObject.getPlaces()));
-                    openPopup();
-                }
+            popupButton.setOnClickListener(v -> {
+                reservedSeats.setText(getSeatsAsString(reservationObject.getPlaces()));
+                openPopup();
             });
         }
 
@@ -85,12 +81,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
             popup.show();
 
             ImageView close = popup.findViewById(R.id.close_popup);
-            close.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popup.dismiss();
-                }
-            });
+            close.setOnClickListener(v -> popup.dismiss());
         }
 
         public String getSeatsAsString(List<Integer> seatList) {
@@ -135,7 +126,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         Time time = reservationHolder.reservationObject.getStartTime();
         Date date = new Date(time.getTime());
 
-        DateFormat dateFormat = new SimpleDateFormat("kk:mm");
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("kk:mm");
         reservationHolder.textStartingTime.setText(dateFormat.format(date));
     }
 
@@ -144,29 +135,4 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         return reservationList.size();
     }
 
-    public void removeReservation(int position) {
-
-        //the seats reserved on this reservation will be marked as free
-        List<Integer> placesOnThisReservation = reservationList.get(position).getPlaces();
-        Film filmOnThisReservation = reservationList.get(position).getFilm();
-        Time timeOnThisReservation = reservationList.get(position).getStartTime();
-        List<Boolean> currentCinemaPlaces = Repository.getCinemaPlaces(filmOnThisReservation.getTitle(), timeOnThisReservation.toString());
-
-        for (int i : placesOnThisReservation) {
-
-            currentCinemaPlaces.set(i, true);
-        }
-
-        reservationList.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, reservationList.size());
-
-        //check if reservationList is empty and then show corresponding layout
-        if (Repository.getReservationList().isEmpty()) {
-            final TextView header = context.getView().findViewById(R.id.no_reservations_message_header);
-            header.setVisibility(View.VISIBLE);
-            final TextView body = context.getView().findViewById(R.id.no_reservations_message_body);
-            body.setVisibility(View.VISIBLE);
-        }
-    }
 }

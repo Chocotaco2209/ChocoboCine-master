@@ -10,6 +10,9 @@
     <string name="no_favorites_msg_header">No interested movies yet</string>
     <string name="no_favorites_msg_body">Tap the heart icon on a film to add it to your interests list.</string>
     <string name="no_reservations_msg_body">Tap the BOOK button on a film to make a reservation.</string>
+    <string name="title">Title</string>
+    <string name="starting_time">Starting Time</string>
+    <string name="swipe_right_to_explore">Swipe right to explore!</string>
 
     <string-array name="genres_array">
         <item>All</item>

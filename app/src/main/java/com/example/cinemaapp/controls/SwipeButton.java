@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
@@ -48,27 +49,21 @@ public class SwipeButton extends RelativeLayout {
 
     public SwipeButton(Context context) {
         super(context);
-        init(context, null, -1, -1);
+        init(context);
     }
 
     public SwipeButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs, -1, -1);
+        init(context);
     }
 
-    public SwipeButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SwipeButton(Context context, AttributeSet attrs, int ignoredDefStyleAttr) {
         super(context, attrs);
-        init(context, attrs, defStyleAttr, -1);
-    }
-
-    @TargetApi(21)
-    public SwipeButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs, defStyleAttr, defStyleRes);
+        init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    private void init(Context context) {
         // add background
         RelativeLayout background = new RelativeLayout(context);
 
@@ -96,7 +91,6 @@ public class SwipeButton extends RelativeLayout {
         centerText.setPadding(25, 25, 25, 25);
         background.addView(centerText, layoutParams);
 
-        //add the moving icon
         final ImageView swipeButton = new ImageView(context);
         slidingButton = swipeButton;
 
@@ -116,7 +110,6 @@ public class SwipeButton extends RelativeLayout {
         swipeButton.setImageDrawable(enabledDrawable);
         addView(swipeButton, layoutParamsButton);
 
-        //set Touch listener
         setOnTouchListener(getButtonTouchListener());
     }
 
@@ -124,55 +117,53 @@ public class SwipeButton extends RelativeLayout {
         this.enabled = enabled;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private OnTouchListener getButtonTouchListener() {
-        return new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        return true;
-                    case MotionEvent.ACTION_MOVE:
-                        if (initialX == 0) {
-                            initialX = slidingButton.getX();
-                        }
-                        //button follows the finger and textView is disappearing (opacity -> 0)
-                        if (event.getX() > slidingButton.getWidth() / 2 &&
-                                event.getX() + slidingButton.getWidth() / 2 < getWidth()) {
-                            slidingButton.setX(event.getX() - slidingButton.getWidth() / 2);
-                            centerText.setAlpha(1 - 1.3f * (slidingButton.getX() + slidingButton.getWidth()) / getWidth());
-                        }
-                        //set button to the limit of component when swiping outside the limits
-                        if  (event.getX() + slidingButton.getWidth() / 2 > getWidth() &&
-                                slidingButton.getX() + slidingButton.getWidth() / 2 < getWidth()) {
-                            slidingButton.setX(getWidth() - slidingButton.getWidth());
-                        }
+        return (v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    if (initialX == 0) {
+                        initialX = slidingButton.getX();
+                    }
+                    //button follows the finger and textView is disappearing (opacity -> 0)
+                    if (event.getX() > slidingButton.getWidth() / 2 &&
+                            event.getX() + slidingButton.getWidth() / 2 < getWidth()) {
+                        slidingButton.setX(event.getX() - slidingButton.getWidth() / 2);
+                        centerText.setAlpha(1 - 1.3f * (slidingButton.getX() + slidingButton.getWidth()) / getWidth());
+                    }
+                    //set button to the limit of component when swiping outside the limits
+                    if  (event.getX() + slidingButton.getWidth() / 2 > getWidth() &&
+                            slidingButton.getX() + slidingButton.getWidth() / 2 < getWidth()) {
+                        slidingButton.setX(getWidth() - slidingButton.getWidth());
+                    }
 
-                        if  (event.getX() < slidingButton.getWidth() / 2) {
-                            slidingButton.setX(0);
-                        }
+                    if  (event.getX() < slidingButton.getWidth() / 2) {
+                        slidingButton.setX(0);
+                    }
 
-                        if (listener != null)
-                            listener.onSwipeButtonMoved(SwipeButton.this);
+                    if (listener != null)
+                        listener.onSwipeButtonMoved(SwipeButton.this);
 
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        if (active) {
-                            collapseButton();
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    if (active) {
+                        collapseButton();
+                    } else {
+                        initialButtonWidth = slidingButton.getWidth();
+
+                        if ((slidingButton.getX() + slidingButton.getWidth() > getWidth() * 0.85) && enabled) {
+                            expandButton();
                         } else {
-                            initialButtonWidth = slidingButton.getWidth();
-
-                            if ((slidingButton.getX() + slidingButton.getWidth() > getWidth() * 0.85) && enabled) {
-                                expandButton();
-                            } else {
-                                moveButtonBack();
-                            }
+                            moveButtonBack();
                         }
+                    }
 
-                        return true;
-                }
-
-                return false;
+                    return true;
             }
+
+            return false;
         };
     }
 
@@ -180,12 +171,9 @@ public class SwipeButton extends RelativeLayout {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
         positionAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        positionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float x = (Float) positionAnimator.getAnimatedValue();
-                slidingButton.setX(x);
-            }
+        positionAnimator.addUpdateListener(animation -> {
+            float x = (Float) positionAnimator.getAnimatedValue();
+            slidingButton.setX(x);
         });
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
@@ -201,12 +189,9 @@ public class SwipeButton extends RelativeLayout {
     private void expandButton() {
         final ValueAnimator positionAnimator =
                 ValueAnimator.ofFloat(slidingButton.getX(), 0);
-        positionAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float x = (Float) positionAnimator.getAnimatedValue();
-                slidingButton.setX(x);
-            }
+        positionAnimator.addUpdateListener(animation -> {
+            float x = (Float) positionAnimator.getAnimatedValue();
+            slidingButton.setX(x);
         });
 
 
@@ -214,13 +199,10 @@ public class SwipeButton extends RelativeLayout {
                 slidingButton.getWidth(),
                 getWidth());
 
-        widthAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                ViewGroup.LayoutParams params = slidingButton.getLayoutParams();
-                params.width = (Integer) widthAnimator.getAnimatedValue();
-                slidingButton.setLayoutParams(params);
-            }
+        widthAnimator.addUpdateListener(animation -> {
+            ViewGroup.LayoutParams params = slidingButton.getLayoutParams();
+            params.width = (Integer) widthAnimator.getAnimatedValue();
+            slidingButton.setLayoutParams(params);
         });
 
 
@@ -255,13 +237,10 @@ public class SwipeButton extends RelativeLayout {
                 slidingButton.getWidth(),
                 initialButtonWidth);
 
-        widthAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                ViewGroup.LayoutParams params =  slidingButton.getLayoutParams();
-                params.width = (Integer) widthAnimator.getAnimatedValue();
-                slidingButton.setLayoutParams(params);
-            }
+        widthAnimator.addUpdateListener(animation -> {
+            ViewGroup.LayoutParams params =  slidingButton.getLayoutParams();
+            params.width = (Integer) widthAnimator.getAnimatedValue();
+            slidingButton.setLayoutParams(params);
         });
 
         widthAnimator.addListener(new AnimatorListenerAdapter() {

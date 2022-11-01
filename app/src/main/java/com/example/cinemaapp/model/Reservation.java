@@ -2,7 +2,6 @@ package com.example.cinemaapp.model;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.List;
@@ -10,10 +9,8 @@ import java.util.Objects;
 
 public class Reservation implements Serializable {
     private Film film;
-    private Time startTime;
-    private List<Integer> places;
-
-    public Reservation(){}
+    private final Time startTime;
+    private final List<Integer> places;
 
     public Reservation(Film film, Time startTime, List<Integer> places) {
         this.film = film;
@@ -31,10 +28,6 @@ public class Reservation implements Serializable {
 
     public Time getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
     }
 
     public List<Integer> getPlaces() { return places; }

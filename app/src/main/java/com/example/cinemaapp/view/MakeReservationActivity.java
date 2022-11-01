@@ -18,28 +18,24 @@ import com.example.cinemaapp.model.Film;
 import com.example.cinemaapp.presenter.MakeReservationPresenter;
 import com.example.cinemaapp.repository.Repository;
 
+import java.util.Objects;
+
 public class MakeReservationActivity extends AppCompatActivity implements MakeReservationPresenter.MainView {
     private MakeReservationPresenter presenter;
     private GridViewAdapter adapter;
 
     private SwipeButton swipeButton;
-    private SwipeButton.OnSwipeButtonListener swipeButtonExpandedListener = new SwipeButton.OnSwipeButtonListener() {
+    private final SwipeButton.OnSwipeButtonListener swipeButtonExpandedListener = new SwipeButton.OnSwipeButtonListener() {
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void onSwipeButtonExpanded(View v) {
             saveReservation();
-            //don't allow to return to this activity
             MakeReservationActivity.this.finish();
         }
 
         @Override
         public void onSwipeButtonMoved(View v) {
-            if (adapter.getSelectedPositions().size() > 0) {
-                swipeButton.setEnabled(true);
-            } else {
-                //swipeButton shouldnt expand
-                swipeButton.setEnabled(false);
-            }
+            swipeButton.setEnabled(adapter.getSelectedPositions().size() > 0);
         }
     };
 
@@ -53,7 +49,7 @@ public class MakeReservationActivity extends AppCompatActivity implements MakeRe
         Film film = (Film)creatorIntent.getSerializableExtra("film");
         String time = creatorIntent.getStringExtra("time");
 
-        getSupportActionBar().setTitle("Reserve");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Reserve");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

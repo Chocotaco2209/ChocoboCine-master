@@ -16,7 +16,8 @@
         android:layout_marginStart="300dp"
         android:layout_marginLeft="300dp"
         android:src="@drawable/ic_exit_to_app_black_24dp"
-        />
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/scan_text"

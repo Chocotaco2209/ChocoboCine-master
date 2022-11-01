@@ -15,14 +15,15 @@
         android:layout_marginBottom="36dp"
         android:alpha="0"
         android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
-        android:text="Swipe right to explore!"
+        android:text="@string/swipe_right_to_explore"
         android:textColor="@color/titleColor"
         android:textIsSelectable="true"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:drawableStart="@drawable/ic_chevron_left_black_24dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -35,7 +36,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.777"
-        app:srcCompat="@drawable/main_block" />
+        app:srcCompat="@drawable/main_block"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/trendText"

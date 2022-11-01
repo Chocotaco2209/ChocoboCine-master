@@ -18,6 +18,7 @@ import com.example.cinemaapp.presenter.HomePresenter;
 import com.example.cinemaapp.repository.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -42,7 +43,7 @@ public class HomeFragment extends Fragment {
 
         //Add spinner
         Spinner spinner = (Spinner) view.findViewById(R.id.filter_spinner);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this.getContext(),
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(Objects.requireNonNull(this.getContext()),
                 R.array.genres_array, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
