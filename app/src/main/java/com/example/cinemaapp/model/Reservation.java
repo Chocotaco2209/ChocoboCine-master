@@ -1,7 +1,9 @@
 package com.example.cinemaapp.model;
 
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.List;
@@ -33,6 +35,7 @@ public class Reservation implements Serializable {
     public List<Integer> getPlaces() { return places; }
 
     @Override
+    @NonNull
     public String toString() {
         return "Reservation{" +
                 "film=" + film +

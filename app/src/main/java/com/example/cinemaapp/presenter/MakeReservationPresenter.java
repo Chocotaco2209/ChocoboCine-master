@@ -2,18 +2,12 @@ package com.example.cinemaapp.presenter;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.example.cinemaapp.model.Film;
 import com.example.cinemaapp.model.Reservation;
 import com.example.cinemaapp.repository.Repository;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.sql.Time;
 import java.text.DateFormat;
