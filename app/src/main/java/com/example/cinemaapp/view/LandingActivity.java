@@ -16,8 +16,6 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
-        //Recognize Swipes
         View view = (View)findViewById(R.id.landing_layout);
         view.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeLeft() {
@@ -32,14 +30,11 @@ public class LandingActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        //don't allow to return to this activity
         this.finish();
     }
 
     private void introAnimation() {
         TextView swipeText = (TextView)findViewById(R.id.swipeSuggestionText);
-
-        //Slide TextView and set opacity to 100
         swipeText.startAnimation(AnimationUtils.loadAnimation(LandingActivity.this, R.anim.right_to_left_swipe));
         swipeText.animate().alpha(1f).setDuration(200);
     }

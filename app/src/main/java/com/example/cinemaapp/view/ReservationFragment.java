@@ -27,7 +27,6 @@ public class ReservationFragment extends Fragment implements Serializable {
 
         View view = inflater.inflate(R.layout.fragment_reservation, container, false);
 
-        //adding recycler view to fragment
         RecyclerView recyclerView = view.findViewById(R.id.reservation_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);

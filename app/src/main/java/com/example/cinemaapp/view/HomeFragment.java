@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         adapter.setfilms(Repository.getHardcodedList());
 
-        //Add spinner
         Spinner spinner = (Spinner) view.findViewById(R.id.filter_spinner);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(Objects.requireNonNull(this.getContext()),
                 R.array.genres_array, android.R.layout.simple_spinner_item);

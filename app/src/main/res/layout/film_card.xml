@@ -52,7 +52,7 @@
             android:layout_marginBottom="16dp"
             android:text="Genre"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#E8E184" />
+            android:textColor="#33691E" />
 
         <TextView
             android:id="@+id/genre_rating_delimiter"
@@ -78,7 +78,7 @@
             android:drawableLeft="@drawable/ic_star_black_24dp"
             android:text="Rating"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#858585" />
+            android:textColor="#616161" />
 
         <TextView
             android:id="@+id/expand_icon"
@@ -113,7 +113,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="Description"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#4E4E4E" />
+                android:textColor="#3E2723" />
 
             <View
                 android:id="@+id/program_delimiter"
@@ -222,7 +222,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 android:text="BOOK"
-                android:textColor="#C6C5B9"
+                android:textColor="#5D4037"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -238,7 +238,8 @@
                 android:background="@android:color/transparent"
                 android:drawableRight="@drawable/ic_favorite_border_black_35dp"
                 android:gravity="right"
-                android:text="" />
+                android:text=""
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </RelativeLayout>
 
